@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "847249321188",
+    "project_id": "safenav-f505c",
+    "storage_bucket": "safenav-f505c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847249321188:android:459284731bc451feb850f1",
+        "android_client_info": {
+          "package_name": "com.example.safe_nav"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847249321188-bniledgjpc8eo618fa8ar0v3t5o3ad0f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBY10jPChQ1TV5-swnlCQ5yYz3pWshZwrU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "847249321188-bniledgjpc8eo618fa8ar0v3t5o3ad0f.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "847249321188-pt04pgq8eda18o0jk4h30v3304ngauvd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.safeNav"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
