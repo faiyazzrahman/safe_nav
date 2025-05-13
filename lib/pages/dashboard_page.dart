@@ -7,7 +7,6 @@ import 'map_page.dart';
 import 'post_crime_page.dart';
 import 'inbox_page.dart';
 import 'settings_page.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -22,11 +21,8 @@ class _DashboardPageState extends State<DashboardPage> {
 
   int _selectedIndex = 0;
 
-  // List of posts
   Stream<QuerySnapshot> _getPostsStream() {
-    return _firestore
-        .collection('posts')
-        .snapshots(); // 'posts' is your collection name
+    return _firestore.collection('posts').snapshots();
   }
 
   void _onItemTapped(int index) {
@@ -52,41 +48,56 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Dashboard')),
-      body: Column(
+      body: Stack(
         children: [
-          // Display Posts Stream
-          Expanded(
-            child: StreamBuilder<QuerySnapshot>(
-              stream: _getPostsStream(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
-                }
-                if (snapshot.hasError) {
-                  return const Center(child: Text('Error loading posts.'));
-                }
-                final posts = snapshot.data!.docs;
+          Positioned.fill(
+            child: Image.asset(
+              'assets/images/Home V.1.png', // Replace with your background image path
+              fit: BoxFit.cover,
+            ),
+          ),
+          Column(
+            children: [
+              Expanded(
+                child: StreamBuilder<QuerySnapshot>(
+                  stream: _getPostsStream(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    if (snapshot.hasError) {
+                      return const Center(child: Text('Error loading posts.'));
+                    }
+                    final posts = snapshot.data!.docs;
 
-                if (posts.isEmpty) {
-                  return const Center(child: Text('No posts available.'));
-                }
+                    if (posts.isEmpty) {
+                      return const Center(child: Text('No posts available.'));
+                    }
 
-                return ListView.builder(
-                  itemCount: posts.length,
-                  itemBuilder: (context, index) {
-                    final post = posts[index];
-                    return ListTile(
-                      title: Text(post['title'] ?? 'No title'),
-                      subtitle: Text(post['description'] ?? 'No description'),
-                      leading: const Icon(Icons.warning),
-                      onTap: () {
-                        // Handle tap on post for more details or map navigation
+                    return ListView.builder(
+                      itemCount: posts.length,
+                      itemBuilder: (context, index) {
+                        final post = posts[index];
+                        return Card(
+                          color: Colors.white70,
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 6,
+                          ),
+                          child: ListTile(
+                            title: Text(post['title'] ?? 'No title'),
+                            subtitle: Text(
+                              post['description'] ?? 'No description',
+                            ),
+                            leading: const Icon(Icons.warning),
+                          ),
+                        );
                       },
                     );
                   },
-                );
-              },
-            ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
