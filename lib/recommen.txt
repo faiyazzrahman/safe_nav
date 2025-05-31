@@ -1,0 +1,5 @@
+Form validation using Form & TextFormField
+
+Password strength meter
+
+Firebase Auth integration

@@ -9,11 +9,23 @@ class InboxPage extends StatefulWidget {
 class _InboxPageState extends State<InboxPage> {
   int _currentIndex = 3;
   void _onTabSelected(int index) {
-    if (index == 0) Navigator.pushReplacementNamed(context, '/dashboard');
-    if (index == 1) Navigator.pushReplacementNamed(context, '/map');
-    if (index == 2) Navigator.pushReplacementNamed(context, '/post');
-    if (index == 3) Navigator.pushReplacementNamed(context, '/inbox');
-    if (index == 4) Navigator.pushReplacementNamed(context, '/settings');
+    switch (index) {
+      case 0:
+        Navigator.pushReplacementNamed(context, '/dashboard');
+        break;
+      case 1:
+        Navigator.pushReplacementNamed(context, '/map');
+        break;
+      case 2:
+        Navigator.pushReplacementNamed(context, '/post');
+        break;
+      case 3:
+        //
+        break;
+      case 4:
+        Navigator.pushReplacementNamed(context, '/settings');
+        break;
+    }
   }
 
   @override

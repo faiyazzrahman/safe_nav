@@ -9,18 +9,29 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  intl: ^0.18.1 # Add this line
   cupertino_icons: ^1.0.8
-  google_maps_flutter: ^2.6.1   # <-- Add this line
+  timeago: ^3.3.0
+  location: ^5.0.3
+  google_maps_flutter: ^2.6.1   
   firebase_core: ^2.25.4
   firebase_auth: ^4.19.4
   cloud_firestore: ^4.17.3
+  firebase_storage: ^11.2.7
   google_sign_in: ^6.2.1
   geolocator: ^10.1.0
   image_picker: ^1.0.7
 dev_dependencies:
+  flutter_launcher_icons: ^0.13.1
+
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
-
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/app_icon.png"
 flutter:
+  assets:
+    - assets/images/
   uses-material-design: true
